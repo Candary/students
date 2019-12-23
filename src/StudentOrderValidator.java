@@ -5,27 +5,48 @@ public class StudentOrderValidator {
 
     static void checkAll() {
 
-        StudentOrder so = readStudentOrder();
+        while (true) {
+            StudentOrder so = readStudentOrder();
+            if (so == null) {
+                break;
+            }
+            System.out.println("Finish");
 
-        AnswerCityRegister cityAnswer = checkCityRegister(so);
-        AnswerWedding wedAnswer = checkWedding(so);
-        AnswerChildren childAnswer = checkChildren(so);
-        AnswerStudent studentAnswer = checkStudent(so);
+            AnswerCityRegister cityAnswer = checkCityRegister(so);
+            if (!cityAnswer.success) {
+                //continue; // вернуться в начало текущего цикла
+                break;
+            }
 
-        sendMail(so);
+            AnswerWedding wedAnswer = checkWedding(so);
+            AnswerChildren childAnswer = checkChildren(so);
+            AnswerStudent studentAnswer = checkStudent(so);
+
+            sendMail(so);
+
+        }
     }
+
 
     static StudentOrder readStudentOrder() {
         StudentOrder so = new StudentOrder();
         return so;
     }
-
     static AnswerCityRegister checkCityRegister(StudentOrder so) {
-        System.out.println("CityRegister is running!");
-        AnswerCityRegister ans = new AnswerCityRegister();
-        return ans;
+        CityRegisterValidator crv1 = new CityRegisterValidator();
+        crv1.hostName = "Host1";
+        crv1.login = "Login1";
+        crv1.password = "Password1";
+        CityRegisterValidator crv2 = new CityRegisterValidator();
+        crv2.hostName = "Host2";
+        crv2.login = "Login2";
+        crv2.password = "Password2";
+        AnswerCityRegister ans1 = crv1.checkCityRegister(so);
+        AnswerCityRegister ans2 = crv2.checkCityRegister(so);
+        return ans1;
     }
 
+        //перенести другие проверки в отдельные классы
     static AnswerWedding checkWedding(StudentOrder so) {
         System.out.println("checkWedding is running");
         return new AnswerWedding();
@@ -41,8 +62,7 @@ public class StudentOrderValidator {
         return new AnswerStudent();
     }
 
-   /* а где класс sendMail? */
     static void sendMail(StudentOrder so) {
-
+        System.out.println("Sendmail in action!");
     }
 }

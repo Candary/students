@@ -7,10 +7,12 @@ public class StudentOrderValidator {
 
         StudentOrder so = readStudentOrder();
 
-        checkCityRegister(so);
-        checkWedding(so);
-        checkChildren(so);
-        checkStudent(so);
+        AnswerCityRegister cityAnswer = checkCityRegister(so);
+        AnswerWedding wedAnswer = checkWedding(so);
+        AnswerChildren childAnswer = checkChildren(so);
+        AnswerStudent studentAnswer = checkStudent(so);
+
+        sendMail(so);
     }
 
     static StudentOrder readStudentOrder() {
@@ -18,20 +20,29 @@ public class StudentOrderValidator {
         return so;
     }
 
-    static void checkCityRegister(StudentOrder so) {
+    static AnswerCityRegister checkCityRegister(StudentOrder so) {
         System.out.println("CityRegister is running!");
+        AnswerCityRegister ans = new AnswerCityRegister();
+        return ans;
     }
 
-    static void checkWedding(StudentOrder so) {
+    static AnswerWedding checkWedding(StudentOrder so) {
         System.out.println("checkWedding is running");
+        return new AnswerWedding();
     }
 
-    static void checkChildren(StudentOrder so) {
+    static AnswerChildren checkChildren(StudentOrder so) {
         System.out.println("checkChildren is running");
+        return new AnswerChildren();
     }
 
-    static void checkStudent(StudentOrder so) {
+    static AnswerStudent checkStudent(StudentOrder so) {
         System.out.println("Студенты проверяются!");
+        return new AnswerStudent();
     }
 
+   /* а где класс sendMail? */
+    static void sendMail(StudentOrder so) {
+
+    }
 }

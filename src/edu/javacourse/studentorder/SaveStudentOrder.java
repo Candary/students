@@ -26,7 +26,11 @@ public class SaveStudentOrder {
         return answer;
     }
 
-    static StudentOrder buildStudentOrder() {
+    /* static - вызываем метод без создания объекта;
+    внутри этого метода нельзя обратиться к полям объекта.
+    внутри него можно обратиться к полям класса.
+     */
+    public static StudentOrder buildStudentOrder() {
         StudentOrder so = new StudentOrder();
         Adult husband = new Adult();
 /*

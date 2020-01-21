@@ -52,9 +52,11 @@ public class StudentOrderValidator {
     }
 
     public StudentOrder readStudentOrder() {
+        SaveStudentOrder.buildStudentOrder();
         StudentOrder so = new StudentOrder();
         return so;
     }
+
     public AnswerCityRegister checkCityRegister(StudentOrder so) {
         return cityRegisterVal.checkCityRegister(so);
     }

@@ -1,8 +1,8 @@
 package edu.javacourse.studentorder.domain;
 
 import java.time.LocalDate;
-
-public class Person {
+/* из абстрактного класса нельзя создавать объекты */
+public abstract class Person {
     protected String surName;
     protected String givenName;
     private String patronymic;

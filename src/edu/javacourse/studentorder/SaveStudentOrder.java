@@ -6,8 +6,8 @@ import edu.javacourse.studentorder.domain.StudentOrder;
 public class SaveStudentOrder {
 
     public static void main(String[] args) {
-        buildStudentOrder();
-/*
+/*        buildStudentOrder();
+
         StudentOrder so = new StudentOrder();
 
         long ans = saveStudentOrder(so);
@@ -30,19 +30,9 @@ public class SaveStudentOrder {
     внутри этого метода нельзя обратиться к полям объекта.
     внутри него можно обратиться к полям класса.
      */
-    public static StudentOrder buildStudentOrder() {
+    public static StudentOrder buildStudentOrder(long id) {
         StudentOrder so = new StudentOrder();
-        Adult husband = new Adult();
-/*
-        husband.setGivenName("Андрей");
-        husband.setSurName("Петров");
-        husband.setPassportNumber("123456");
-        so.setHusband(husband);
-
-        String ans = husband.getPersonString();
-        System.out.println(ans);
-*/
-
+        so.setStudentOrderId(id);
         return so;
     }
 }

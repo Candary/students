@@ -6,9 +6,9 @@ import edu.javacourse.studentorder.domain.StudentOrder;
 public class SaveStudentOrder {
 
     public static void main(String[] args) {
-        buildStudentOrder();
-/*
-        StudentOrder so = new StudentOrder();
+       buildStudentOrder(10);
+
+/*         StudentOrder so = new StudentOrder();
 
         long ans = saveStudentOrder(so);
         System.out.println(ans);
@@ -26,19 +26,25 @@ public class SaveStudentOrder {
         return answer;
     }
 
-    static StudentOrder buildStudentOrder() {
+    /* static - вызываем метод без создания объекта;
+    внутри этого метода нельзя обратиться к полям объекта.
+    внутри него можно обратиться к полям класса.
+     */
+    public static StudentOrder buildStudentOrder(long id) {
         StudentOrder so = new StudentOrder();
-        Adult husband = new Adult();
-/*
-        husband.setGivenName("Андрей");
-        husband.setSurName("Петров");
-        husband.setPassportNumber("123456");
-        so.setHusband(husband);
+        so.setStudentOrderId(id);
+        StudentOrder so1 = so;
+        // если ссылка используется как параметр - создаётся ещё одна ссылка
+        // вернее, so1 копируется...
+        // теперь она будет stOr
+        // такая вот особенность...
+        printStudentOrder(so1);
 
-        String ans = husband.getPersonString();
-        System.out.println(ans);
-*/
-
+//        Adult husband = new Adult("Васильев", "Андрей", "Петрович", null);
         return so;
+    }
+
+    static void printStudentOrder(StudentOrder stOr) {
+        System.out.println(stOr.getStudentOrderId());
     }
 }

@@ -12,8 +12,11 @@ public class Adult extends Person {
     private String university;
     private String studentId;
 
-    public Adult() {
-        System.out.println("Adult is created!");
+//     другой конструктор
+//    public Adult(LocalDate surName, String givenName, String patronymic, String dateOfBirth) {};
+
+    public Adult(String surName, String givenName, String patronymic, LocalDate dateOfBirth) {
+        super(surName, givenName, patronymic, dateOfBirth);
     }
 
     /*  переопределение метода
